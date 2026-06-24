@@ -42,14 +42,17 @@ function calculaTempo(tempoObjetivo) {
 }
 
 function atualizaCronometro(){
-    document.getElementById("dias0").textContent = calculaTempo(tempos[0])[0];
-    document.getElementById("horas0").textContent = calculaTempo(tempos[0])[1];
-    document.getElementById("min0").textContent = calculaTempo(tempos[0])[2];
-    document.getElementById("seg0").textContent = calculaTempo(tempos[0])[3];
+    // Esse 'for' vai rodar 4 vezes, uma para cada objetivo (0, 1, 2 e 3)
+    for (let i = 0; i < tempos.length; i++) {
+        let tempoCalculado = calculaTempo(tempos[i]);
 
-    for (let i=0; i<contadores.length;i++){
-       // contadores[i].textContent = calculaTempo(tempos[i]);   
+        // O `${i}` muda automaticamente para 0, 1, 2 e 3, atualizando todas as abas!
+        document.getElementById(`dias${i}`).textContent = tempoCalculado[0];
+        document.getElementById(`horas${i}`).textContent = tempoCalculado[1];
+        document.getElementById(`min${i}`).textContent = tempoCalculado[2];
+        document.getElementById(`seg${i}`).textContent = tempoCalculado[3];
     }
+
 }
 
 function comecaCronometro(){
